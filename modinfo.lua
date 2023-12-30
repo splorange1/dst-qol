@@ -1,10 +1,10 @@
-name = "splorange's QOL"
+name = "splorange's QOL (git)"
 --The name of your mod
 description = "Simple QOL mod that aims to remove small annoyances"
 --The description that shows when you are selecting the mod from the list
 author = "splorange"
 --Your name!
-version = "1.0"
+version = "1.1"
 
 forumthread = ""
 

@@ -57,6 +57,13 @@ end
 
 if GUANO_LOOT then
 	AddPrefabPostInit("world", RemoveGuanoFromBat)
+
+	AddPrefabPostInit("bat", function(inst)
+		if GLOBAL.TheWorld.ismastersim then
+			inst.components.periodicspawner:Stop()
+			inst:RemoveComponent("periodicspawner")
+		end
+	end)
 end
 
 ------------------------------------------------------------
