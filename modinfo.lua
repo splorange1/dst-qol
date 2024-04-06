@@ -4,7 +4,7 @@ description = "Simple QOL mod that aims to remove small annoyances"
 --The description that shows when you are selecting the mod from the list
 author = "splorange"
 --Your name!
-version = "1.1"
+version = "1.2"
 
 forumthread = ""
 
@@ -27,9 +27,16 @@ client_only_mod = false
 api_version = 10
 --This is the version of the game's API and should stay the same for the most part
 
+-- CunningFox's Gorge Extender
+local function Breaker(title_en)
+	return {name = title_en , options = {{description = "", data = false}}, default = false}
+end
+
 configuration_options =
 {
+	Breaker("QoL Features"),
 	{
+		
 	    name = "BELLED_BEEFALO_POOP",
 	    label = "No Belled Beefalo Poop",
         options = {
@@ -37,7 +44,7 @@ configuration_options =
 	        {description = "No", data = false},
 	    },
 	    default = true,
-	    hover = "Removes Belled Beefalo's Ability to Poop"
+	    hover = "Removes belled Beefalo's ability to poop"
 	},
 
 	{
@@ -48,6 +55,18 @@ configuration_options =
 	        {description = "No", data = false},
 	    },
 	    default = true,
-	    hover = "Removes Guano from the Batilisk's Loot Pool"
+	    hover = "Removes guano from the Batilisk's loot pool"
+	},
+
+	Breaker("Gameplay Tweaks"),
+	{
+	    name = "WILLOW_FRENZY_BUFF",
+	    label = "Willow Burning Frenzy Buff",
+        options = {
+	        {description = "Yes", data = true},
+	        {description = "No", data = false},
+	    },
+	    default = false,
+	    hover = "Ignites enemies on-hit while burning frenzy is active"
 	}
 }

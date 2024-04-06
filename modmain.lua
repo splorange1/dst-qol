@@ -1,6 +1,11 @@
-
+--QOL
 local BELLED_BEEFALO_POOP = GetModConfigData("BELLED_BEEFALO_POOP")
 local GUANO_LOOT = GetModConfigData("GUANO_LOOT")
+
+--GAMEPLAY TWEAKS
+local WILLOW_FRENZY_BUFF = GetModConfigData("WILLOW_FRENZY_BUFF")
+
+---Upvalue functions----------------------------------------
 
 local function GetUpvalue(func, name)
 	local debug = GLOBAL.debug
@@ -21,6 +26,10 @@ local function SetUpvalue(func, ind, value)
 	local debug = GLOBAL.debug
 	debug.setupvalue(func, ind, value)
 end
+
+------------------------------------------------------------
+
+-----------------------QOL FEATURES-------------------------
 
 ---No Belled Beefalo Poop-----------------------------------
 
@@ -63,6 +72,24 @@ if GUANO_LOOT then
 			inst.components.periodicspawner:Stop()
 			inst:RemoveComponent("periodicspawner")
 		end
+	end)
+end
+
+------------------------------------------------------------
+
+--------------------GAMEPLAY TWEAKS-------------------------
+
+---Willow Burning Frenzy Buff-------------------------------
+
+local function WillowOnHitOther(inst, other)
+    if other.components.burnable and inst:HasTag("firefrenzy") then
+        other.components.burnable:Ignite(nil, inst)
+    end
+end
+
+if WILLOW_FRENZY_BUFF then
+	AddPrefabPostInit("willow", function(inst)
+		inst.components.combat.onhitotherfn = WillowOnHitOther
 	end)
 end
 
